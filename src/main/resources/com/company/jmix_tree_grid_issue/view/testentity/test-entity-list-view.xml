@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://testEntityListView.title"
+      focusComponent="testEntitiesDataGrid">
+    <data>
+        <collection id="testEntitiesDc"
+                    class="com.company.jmix_tree_grid_issue.entity.TestEntity">
+            <loader id="testEntitiesDl" readOnly="true"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="testEntitiesDataGrid.create"/>
+            <button id="editBtn" action="testEntitiesDataGrid.edit"/>
+            <button id="removeBtn" action="testEntitiesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="testEntitiesDl"/>
+        </hbox>
+        <treeDataGrid id="testEntitiesDataGrid" width="100%" minHeight="20em"
+                      dataContainer="testEntitiesDc" hierarchyProperty="parent"
+                      columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="code"/>
+                <column property="name"/>
+            </columns>
+        </treeDataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

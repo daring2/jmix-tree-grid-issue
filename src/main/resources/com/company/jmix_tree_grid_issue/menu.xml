@@ -3,6 +3,8 @@
 
     <menu id="application" title="msg://com.company.jmix_tree_grid_issue/menu.application.title" opened="true">
         <item view="sb_User.list" title="msg://com.company.jmix_tree_grid_issue.view.user/UserListView.title"/>
+        <item view="sb_TestEntity.main"
+              title="msg://com.company.jmix_tree_grid_issue.view.testentity/testEntityListView.title"/>
     </menu>
 
 </menu-config>
